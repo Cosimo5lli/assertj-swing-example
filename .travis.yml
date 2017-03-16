@@ -1,0 +1,20 @@
+language: java
+
+sudo: true
+
+before_script:
+- sudo apt-get install tightvncserver
+- sudo apt-get install expect
+
+cache:
+  directories:
+  - $HOME/.m2
+
+#skip installation step
+install: true
+
+jdk:
+- oraclejdk8
+
+script:
+- bash initDisplay.sh mvn -f com.example.assertj.swing/pom.xml clean verify
